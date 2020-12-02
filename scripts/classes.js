@@ -52,6 +52,8 @@ class Baby extends Egg {
     this.sleep = 0;
     this.bored = 0;
 
+    this.image = "assets/baby.png";
+
     this.hungerIntervalValue = 1000 * 50;
     this.sleepIntervalValue = 1000 * 120;
     this.boredIntervalValue = 1000 * 40;
@@ -66,6 +68,8 @@ class Rookie extends Baby {
   constructor(name) {
     super(name);
 
+    this.image = "assets/rookie.png";
+
     this.hungerIntervalValue = 1000 * 40;
     this.sleepIntervalValue = 1000 * 100;
     this.boredIntervalValue = 1000 * 30;
@@ -79,6 +83,8 @@ class Rookie extends Baby {
 class Champion extends Rookie {
   constructor(name) {
     super(name);
+
+    this.image = "assets/champion.png";
 
     this.hungerIntervalValue = 1000 * 20;
     this.sleepIntervalValue = 1000 * 50;
@@ -97,9 +103,13 @@ class Game {
 
   start() {
     console.log($(".creature img"));
-    $(".creature img").attr("src", this.pokemon.image);
+    this.updateImage();
     this.pokemon.warmthTimer();
     this.startTimer();
+  }
+
+  updateImage() {
+    $(".creature img").attr("src", this.pokemon.image);
   }
 
   startTimer() {
@@ -108,6 +118,7 @@ class Game {
       if (this.totalTime >= this.pokemon.evolveThreshold) {
         this.totalTime = 0;
         this.pokemon = new this.pokemon.nextLevel(this.pokemon.name);
+        this.updateImage();
       }
     }, 1000);
   }

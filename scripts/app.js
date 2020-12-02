@@ -1,6 +1,6 @@
 console.log("[app.js] loaded");
 
-const egg = new Egg("Guilmon");
+const egg = new Egg("ghosty");
 
 const baby = new Baby(egg.name);
 
