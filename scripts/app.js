@@ -7,3 +7,5 @@ const baby = new Baby(egg.name);
 const rookie = new Rookie(baby.name);
 
 const champion = new Champion(rookie.name);
+
+const game = new Game(egg);

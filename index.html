@@ -3,10 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- external styles -->
+    <link
+      href="https://unpkg.com/nes.css@latest/css/nes.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <!-- internal styles -->
     <link rel="stylesheet" href="styles/main.css" />
+    <!-- external scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <!-- internal scripts -->
     <script src="scripts/classes.js"></script>
     <script src="scripts/app.js" defer></script>
     <title>Toma-GOTI</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <!-- stats -->
+      <div class="stats nes-container is-dark">
+        <section id="boredom" class="stat">
+          <progress
+            class="nes-progress is-primary"
+            value="100"
+            max="100"
+          ></progress>
+        </section>
+        <section id="warmth" class="stat">
+          <progress
+            class="nes-progress is-error"
+            value="100"
+            max="100"
+          ></progress>
+        </section>
+        <section id="hunger" class="stat">
+          <progress
+            class="nes-progress is-success"
+            value="100"
+            max="100"
+          ></progress>
+        </section>
+      </div>
+      <!-- creature -->
+      <div class="creature nes-container is-centered">
+        <img src="" alt="" />
+      </div>
+      <!-- buttons -->
+      <div class="buttons nes-container">
+        <button type="button" class="nes-btn is-primary">
+          <i class="fas fa-dice"></i>
+        </button>
+        <button id="warmth-button" type="button" class="nes-btn is-error">
+          <i class="fas fa-thermometer-half"></i>
+        </button>
+        <button type="button" class="nes-btn is-success">
+          <i class="fas fa-bread-slice"></i>
+        </button>
+      </div>
+
+      <!-- modal -->
+      <div id="modal">
+        <div class="nes-container is-rounded is-dark">
+          <p>You have kill this poor creature...</p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body {
+  background-color: #212529;
+}
+
+.container {
+  background-color: white;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr 100px;
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 700px;
+  border: 15px solid yellow;
+  border-radius: 5px;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border-color: #212529;
+}
+
+.buttons > :last-child {
+  margin-bottom: 4px;
+}
+
+.stat {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.creature {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creature img {
+  width: 50%;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: none;
+}
+
+.buttons button {
+  /* flex: 1; */
+  margin: 0 15px;
+  width: 80px;
+}
+
+button i {
+  font-size: 30px;
+  /* margin-right: 5px; */
+  margin-bottom: 5px;
+}
+
+#modal {
+  background-color: rgba(1, 1, 1, 0.664);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
