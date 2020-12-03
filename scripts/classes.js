@@ -8,7 +8,7 @@ class Egg {
     this.warmth = 100;
     this.image = "assets/egg.png";
 
-    this.warmthIntervalValue = 1000 * 20;
+    this.warmthIntervalValue = 1000 * 2;
 
     this.evolveThreshold = 1000 * 120;
 
@@ -52,6 +52,8 @@ class Egg {
             max="100"
           ></progress>
         </section>`);
+
+    this.warmthTimer();
   }
 }
 
