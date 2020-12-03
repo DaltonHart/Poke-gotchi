@@ -1,3 +1,3 @@
-# Toma-goti
+# Poke-gotchi
 
-A fun virtual tomagatchi!
+A fun virtual pokemon tomagatchi!
