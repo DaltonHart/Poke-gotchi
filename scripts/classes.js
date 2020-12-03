@@ -15,12 +15,6 @@ class Egg {
     this.nextLevel = Baby;
   }
 
-  isAlive() {
-    if (!this.alive) {
-      console.log("You have died");
-    }
-  }
-
   increaseWarmth() {
     this.warmth = this.warmth + 10;
     $("#warmth progress").attr("value", this.warmth);
@@ -42,15 +36,32 @@ class Egg {
 
     $("#warmth-button").click(() => this.increaseWarmth());
   }
+
+  generateStats() {
+    const $buttons = $("#buttons");
+    const $stats = $("#stats");
+
+    $buttons.append(`<button id="warmth-button" type="button" class="nes-btn is-error">
+          <i class="fas fa-thermometer-half"></i>
+        </button>`);
+
+    $stats.append(`<section id="warmth" class="stat">
+          <progress
+            class="nes-progress is-error"
+            value="100"
+            max="100"
+          ></progress>
+        </section>`);
+  }
 }
 
 class Baby extends Egg {
   constructor(name) {
     super(name);
 
-    this.hunger = 0;
-    this.sleep = 0;
-    this.bored = 0;
+    this.hunger = 100;
+    this.sleep = 100;
+    this.bored = 100;
 
     this.image = "assets/baby.png";
 
@@ -61,6 +72,53 @@ class Baby extends Egg {
     this.evolveThreshold = 1000 * 240;
 
     this.nextLevel = Rookie;
+  }
+
+  generateStats() {
+    const $buttons = $("#buttons");
+    const $stats = $("#stats");
+
+    $buttons
+      .empty()
+      .append(
+        `<button id="sleep-button" type="button" class="nes-btn is-error">
+          <i class="fas fa-bed"></i>
+        </button>`
+      )
+      .append(
+        `<button type="button" class="nes-btn is-primary">
+          <i class="fas fa-dice"></i>
+        </button>`
+      ).append(`<button type="button" class="nes-btn is-success">
+          <i class="fas fa-bread-slice"></i>
+        </button>`);
+
+    $stats
+      .empty()
+      .append(
+        `<section id="sleep" class="stat">
+          <progress
+            class="nes-progress is-error"
+            value="100"
+            max="100"
+          ></progress>
+        </section>`
+      )
+      .append(
+        `<section id="boredom" class="stat">
+          <progress
+            class="nes-progress is-primary"
+            value="100"
+            max="100"
+          ></progress>
+        </section>`
+      ).append(`<section id="hunger" class="stat">
+          <progress
+            class="nes-progress is-success"
+            value="100"
+            max="100"
+          ></progress>
+        </section>`);
   }
 }
 
@@ -104,7 +162,7 @@ class Game {
   start() {
     console.log($(".creature img"));
     this.updateImage();
-    this.pokemon.warmthTimer();
+    this.pokemon.generateStats();
     this.startTimer();
   }
 
@@ -119,6 +177,7 @@ class Game {
         this.totalTime = 0;
         this.pokemon = new this.pokemon.nextLevel(this.pokemon.name);
         this.updateImage();
+        this.pokemon.generateStats();
       }
     }, 1000);
   }

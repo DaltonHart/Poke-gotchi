@@ -1,11 +1,10 @@
 console.log("[app.js] loaded");
 
-const egg = new Egg("ghosty");
+let game;
 
-const baby = new Baby(egg.name);
-
-const rookie = new Rookie(baby.name);
-
-const champion = new Champion(rookie.name);
-
-const game = new Game(egg);
+$("#nickname").click(function () {
+  const gastly = new Egg($("#nickname_input").val() || "gastly");
+  game = new Game(gastly);
+  game.start();
+  $("#modal-start").css("display", "none");
+});

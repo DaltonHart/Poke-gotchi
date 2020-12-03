@@ -28,50 +28,41 @@
   <body>
     <div class="container">
       <!-- stats -->
-      <div class="stats nes-container is-dark">
-        <section id="boredom" class="stat">
-          <progress
-            class="nes-progress is-primary"
-            value="100"
-            max="100"
-          ></progress>
-        </section>
-        <section id="warmth" class="stat">
-          <progress
-            class="nes-progress is-error"
-            value="100"
-            max="100"
-          ></progress>
-        </section>
-        <section id="hunger" class="stat">
-          <progress
-            class="nes-progress is-success"
-            value="100"
-            max="100"
-          ></progress>
-        </section>
-      </div>
+      <div id="stats" class="stats nes-container is-dark"></div>
       <!-- creature -->
       <div class="creature nes-container is-centered">
         <img src="" alt="" />
       </div>
       <!-- buttons -->
-      <div class="buttons nes-container">
-        <button type="button" class="nes-btn is-primary">
-          <i class="fas fa-dice"></i>
-        </button>
-        <button id="warmth-button" type="button" class="nes-btn is-error">
-          <i class="fas fa-thermometer-half"></i>
-        </button>
-        <button type="button" class="nes-btn is-success">
-          <i class="fas fa-bread-slice"></i>
-        </button>
-      </div>
+      <div id="buttons" class="buttons nes-container"></div>
 
       <!-- modal -->
       <div id="modal">
         <div class="nes-container is-rounded is-dark">
           <p>You have kill this poor creature...</p>
+        </div>
+      </div>
+      <!-- start game modal -->
+      <div id="modal-start">
+        <div class="nes-container is-rounded is-dark">
+          <h2>Welcome!</h2>
+
+          <p>Time to take care of your gastly!</p>
+          <div class="nes-field">
+            <label for="name_field">Gastly Nickname</label>
+            <div class="input_submit">
+              <input
+                id="nickname_input"
+                placeholder="Gastly"
+                type="text"
+                id="name_field"
+                class="nes-input"
+              />
+              <button id="nickname" type="button" class="nes-btn is-primary">
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
