@@ -55,6 +55,10 @@ class Egg {
 
     this.warmthTimer();
   }
+
+  clearTimers() {
+    clearInterval(this.warmthInterval);
+  }
 }
 
 class Baby extends Egg {
@@ -88,10 +92,11 @@ class Baby extends Egg {
         </button>`
       )
       .append(
-        `<button type="button" class="nes-btn is-primary">
+        `<button id="play-button" type="button" class="nes-btn is-primary">
           <i class="fas fa-dice"></i>
         </button>`
-      ).append(`<button type="button" class="nes-btn is-success">
+      )
+      .append(`<button id="eat-button" type="button" class="nes-btn is-success">
           <i class="fas fa-bread-slice"></i>
         </button>`);
 
@@ -121,6 +126,34 @@ class Baby extends Egg {
             max="100"
           ></progress>
         </section>`);
+
+    this.hungerTimer();
+  }
+
+  increaseHunger() {
+    this.hunger = this.hunger + 10;
+    $("#hunger progress").attr("value", this.hunger);
+  }
+
+  decreaseHunger() {
+    if (this.hunger > 0) this.hunger = this.hunger - 10;
+    if (this.hunger === 0) {
+      $("#modal").css("display", "flex");
+    }
+    $("#hunger progress").attr("value", this.hunger);
+  }
+
+  hungerTimer() {
+    this.hungerInterval = setInterval(
+      () => this.decreaseHunger(),
+      this.hungerIntervalValue
+    );
+
+    $("#eat-button").click(() => this.increaseHunger());
+  }
+
+  clearTimers() {
+    clearInterval(this.hungerInterval);
   }
 }
 
@@ -177,6 +210,7 @@ class Game {
       this.totalTime = this.totalTime + 1000;
       if (this.totalTime >= this.pokemon.evolveThreshold) {
         this.totalTime = 0;
+        this.pokemon.clearTimers();
         this.pokemon = new this.pokemon.nextLevel(this.pokemon.name);
         this.updateImage();
         this.pokemon.generateStats();
